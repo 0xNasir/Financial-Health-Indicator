@@ -1,0 +1,37 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()">
+  <h2 mat-dialog-title>Manage Finance Data</h2>
+  <mat-dialog-content class="mat-typography">
+    <div style="padding-top: 10px;">
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="title" formControlName="title">
+        <mat-error>Field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Income</mat-label>
+        <input matInput type="number" placeholder="Income"  formControlName="income">
+        <mat-error>Field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Expense</mat-label>
+        <input matInput type="number" placeholder="Expense"  formControlName="expenses">
+        <mat-error>Field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Debts</mat-label>
+        <input matInput type="number" placeholder="Debts"  formControlName="debts">
+        <mat-error>Field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Assets</mat-label>
+        <input matInput type="number" placeholder="Assets"  formControlName="assets">
+        <mat-error>Field is required</mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial>Save</button>
+  </mat-dialog-actions>
+
+</form>

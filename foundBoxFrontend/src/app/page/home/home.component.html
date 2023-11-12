@@ -1,0 +1,30 @@
+<div fxLayout fxLayoutAlign="center center" style="margin-top: 10px;">
+  <div fxFlex="95" fxFlex.xs="100" fxFlex.sm="100">
+    <div style="text-align: right; padding: 10px 0">
+      <button mat-raised-button color="primary" (click)="openPopUp()">Add new</button>
+    </div>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container *ngFor="let meta of tableMeta" [matColumnDef]="meta.key">
+        <mat-header-cell *matHeaderCellDef> {{meta.label}} </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[meta.key]}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="option">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" matTooltip="Update" (click)="openPopUp(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRow(element)" matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div fxLayout fxLayoutAlign="center center" style="height: 100%">
+  <mat-card fxFlex="33" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form *ngIf="form" [formGroup]="form" (submit)="loginFormSubmit()" style="margin-top: 20px;">
+        <p>
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Username" formControlName="username">
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error>Field is required</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide?'password':'text'" placeholder="Password" formControlName="password">
+            <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>Field is required</mat-error>
+          </mat-form-field>
+        </p>
+        <div fxLayout fxLayoutAlign="center center">
+          <button mat-flat-button color="primary" [disabled]="showLoading">LOGIN</button>
+        </div>
+        <p style="margin-top: 10px;">Are you new here? <a routerLink="/register">Register now</a></p>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

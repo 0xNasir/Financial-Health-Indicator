@@ -1,0 +1,55 @@
+<div fxLayout fxLayoutAlign="center center" style="padding-top: 20px">
+  <mat-form-field appearance="outline">
+    <mat-label>Select data</mat-label>
+    <mat-select (selectionChange)="generateScore($event)">
+      <mat-option *ngFor="let d of data" [value]="d">{{d.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<mat-toolbar *ngIf="selectedData" style="width: 95%; margin: 0 auto 20px auto" color="accent">Financial Health
+  Score: {{selectedData.title}}</mat-toolbar>
+<div fxLayout fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap.sm="10px" fxLayoutGap.xs="10px" *ngIf="selectedData"
+     style="width: 95%; margin: 0 auto" fxLayoutGap="1%">
+  <div fxFlex="24" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card>
+      <p>Income</p>
+      <p>{{selectedData.income}}</p>
+    </mat-card>
+  </div>
+  <div fxFlex="24" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card>
+      <p>Expenses</p>
+      <p>{{selectedData.expenses}}</p>
+    </mat-card>
+  </div>
+  <div fxFlex="24" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card>
+      <p>Debts</p>
+      <p>{{selectedData.debts}}</p>
+    </mat-card>
+  </div>
+  <div fxFlex fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card>
+      <p>Assets</p>
+      <p>{{selectedData.assets}}</p>
+    </mat-card>
+  </div>
+</div>
+<div *ngIf="selectedData" style="width: 95%; margin: 0 auto;">
+  <div>
+    <h1 style="padding: 20px 0;">Overall Financial Score is: {{health}}%</h1>
+  </div>
+  <h2>Here is the breakdown:</h2>
+</div>
+
+<div fxLayout fxLayout.sm="column" fxLayout.xs="column">
+  <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="100">
+    <canvas id="debtRatio"></canvas>
+  </div>
+  <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="100">
+    <canvas id="expenseRatio"></canvas>
+  </div>
+  <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="100">
+    <canvas id="healthScore"></canvas>
+  </div>
+</div>
